@@ -1,31 +1,42 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:task="http://www.springframework.org/schema/task"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd
-        http://www.springframework.org/schema/aop 
-	    http://www.springframework.org/schema/aop/spring-aop.xsd 
-	    http://www.springframework.org/schema/task
-	   	http://www.springframework.org/schema/task/spring-task.xsd">
-	   	
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx.xsd     
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd        
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd     
+    http://www.springframework.org/schema/jee
+    http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+    http://www.springframework.org/schema/rabbit
+ 	http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd  
+ 	http://www.springframework.org/schema/data/mongo
+    http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
+    http://www.springframework.org/schema/task
+   	http://www.springframework.org/schema/task/spring-task.xsd">
+	
+	<context:component-scan base-package="com.happydesk,com.happydesk.interceptor,net.codejava.spring,com.happydesk.controller,com.happydesk.service,com.happydesk.dao,com.happydesk.util,com.happydesk.domain,com.happydesk.dto" />
+	<context:property-placeholder location="classpath:resources/database.properties,classpath:resources/application.properties"></context:property-placeholder>
+	
 
-
-
-	<context:component-scan base-package="com.happydesk,com.happydesk.interceptor" />
 	<mvc:annotation-driven />
+	
+	
 	<!-- your beans declaration goes here -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
         <property name="prefix" value="/WEB-INF/view/" />  
         <property name="suffix" value=".jsp" />  
     </bean>
+
      <!-- Configuring interceptors based on URI -->
     <mvc:interceptors>
         <mvc:interceptor>
@@ -34,4 +45,103 @@
         </mvc:interceptor>
     </mvc:interceptors>
     
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+    
+    <!--- JPA transaction manager -->
+    <bean id="entityManagerFactory"
+        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="happydesk" />
+         <property name="dataSource" ref="dataSource" />
+          <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="MYSQL" />
+                <property name="showSql" value="false" />
+            </bean>
+        </property>
+        <property name="jpaProperties"> 
+        <props>
+<!--         	<prop key="hibernate.hbm2ddl.auto">update</prop> -->
+        	<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop> -->
+        	<prop key="hibernate.dialect">com.happydesk.dao.CustomeDialect</prop>
+        </props>
+        </property> 
+    </bean>
+    
+    <bean id="entityManagerFactoryReadOnly"
+        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="happydesk" />
+         <property name="dataSource" ref="dataSourceReadOnly" />
+          <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="MYSQL" />
+                <property name="showSql" value="false" />
+            </bean>
+        </property>
+        <property name="jpaProperties"> 
+	        <props>
+	        	<prop key="hibernate.dialect">com.happydesk.dao.CustomeDialect</prop>
+	        </props>
+        </property>
+       
+    </bean>
+	
+	
+	
+	
+	<bean id="mainDataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+          <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+          <property name="url" value="${jdbc.url}" />
+          <property name="username" value="${jdbc.username}"/>
+          <property name="password" value="${jdbc.password}"/>
+          <property name="initialSize" value="10"/>
+          <property name="maxActive" value="100"/>
+          <property name="maxIdle" value="30"/>
+          <property name="minIdle" value="5"/>
+          <property name="timeBetweenEvictionRunsMillis" value="30000"/>
+          <property name="minEvictableIdleTimeMillis" value="50000"/>
+          <property name="validationQuery" value="select 1"/>
+          <property name="validationInterval" value="10000"/>
+          <property name="testOnBorrow" value="true"/>
+          <property name="removeAbandoned" value="true"/>
+          <property name="removeAbandonedTimeout" value="55"/>
+   </bean> 
+   
+   <bean id="mainDataSourceReadOnly" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="${jdbc.urlReadOnly}" />
+        <property name="username" value="${jdbc.usernameReadOnly}"/>
+        <property name="password" value="${jdbc.passwordReadOnly}"/>
+        <property name="initialSize" value="5"/>
+        <property name="maxActive" value="10"/>
+        <property name="maxIdle" value="5"/>
+        <property name="minIdle" value="5"/>
+        <property name="timeBetweenEvictionRunsMillis" value="34000"/>
+        <property name="minEvictableIdleTimeMillis" value="55000"/>
+        <property name="validationQuery" value="select 1"/>
+        <property name="validationInterval" value="34000"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="removeAbandonedTimeout" value="55"/>
+    </bean>
+	
+	 <bean id="dataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+        <property name="targetDataSource" ref="mainDataSource"></property>
+    </bean>
+    
+    <bean id="dataSourceReadOnly" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+        <property name="targetDataSource" ref="mainDataSourceReadOnly"></property>
+    </bean>
+     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    <bean id="transactionManagerReadOnly" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactoryReadOnly" />
+    </bean>
+    
+    <tx:annotation-driven transaction-manager="transactionManager" order="10"/>
+    <tx:annotation-driven transaction-manager="transactionManagerReadOnly" />
+    
+     <bean id="userDao" class="com.happydesk.dao.UserDao">
+   		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
 </beans>

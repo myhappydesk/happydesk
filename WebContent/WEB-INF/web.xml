@@ -20,4 +20,5 @@
 		<servlet-name>SpringController</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	
 </web-app>

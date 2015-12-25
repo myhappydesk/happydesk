@@ -7,7 +7,7 @@
 </head>
 <body>
 
-
+${message}
  
 <form action="loginprocess.do" method="post">  
 Email:<input type="text" name="email"/><br/><br/>  

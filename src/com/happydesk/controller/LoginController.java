@@ -7,13 +7,13 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-
-
+import com.happydesk.service.LoginService;
 
 /**
  * @author Manu
@@ -24,6 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 //	@Autowired
 	//SessionUtil sessionUtil;
+	
+	@Autowired
+	private LoginService loginService;
 	
 	/**
 	 * Method for handling file download request from client
@@ -38,7 +41,7 @@ public class LoginController {
 	
 	@RequestMapping("/login")  
     public ModelAndView loginPage() {  
-        String message = "HELLO SPRING MVC HOW R U";  
+        String message = "";  
         return new ModelAndView("login", "message", message);  
     }
 	
@@ -50,12 +53,18 @@ public class LoginController {
 		System.out.println("Email is :::"+username);
 		String password=request.getParameter("password");
 		System.out.println("password is :::"+password);
-	
-		//sessionUtil.setSession(request.getSession());
-		
+		boolean authenticatedUserOrNot=loginService.authenticate(username, password);
 		Map<String,String> loginMap=new HashMap<String,String>();
-		loginMap.put("email", username); 
-        return new ModelAndView("loginsuccess","loginMap",loginMap);  
+		if(authenticatedUserOrNot == true){
+			
+			loginMap.put("email", username); 
+	        return new ModelAndView("loginsuccess","loginMap",loginMap);
+		}else{
+			//loginMap.put("errorMsg", "your emailid or password is wrong, ask administrator"); 
+	        return new ModelAndView("login","message","your emailid or password is wrong, ask administrator");
+		}
+		
+		  
     }
 
 }
