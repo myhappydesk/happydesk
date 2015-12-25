@@ -89,9 +89,9 @@ CREATE TABLE `company_email_parser` (
 # Dump of table company_email_respond
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `company_email_respond`;
+DROP TABLE IF EXISTS `company_email_response`;
 
-CREATE TABLE `company_email_respond` (
+CREATE TABLE `company_email_response` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `company_id` int(11) DEFAULT NULL,
   `respond_email` varchar(50) DEFAULT NULL,

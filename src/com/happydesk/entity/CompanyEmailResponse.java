@@ -12,15 +12,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "company_email_parser")
-public class CompanyEmailParser extends BaseEntity<Integer> {
+@Table(name = "company_email_response")
+public class CompanyEmailResponse extends BaseEntity<Integer> {
 
 	/**
 	 * om yadav 
-	 * Table : company_email_parser
+	 * Table : company_email_response
 	 */
 
-	private static final long serialVersionUID = 1259291331666015204L;
+	private static final long serialVersionUID = 319011849230292348L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +29,11 @@ public class CompanyEmailParser extends BaseEntity<Integer> {
 	@Column(name = "company_id")
 	private Integer companyId;
 
-	@Column(name = "email_id")
+	@Column(name = "respond_email")
 	private String email;
+	
+	@Column(name = "default")
+	private boolean isDefault;
 
 	@Column(name = "created_by")
 	private Integer createdBy;
@@ -140,4 +143,19 @@ public class CompanyEmailParser extends BaseEntity<Integer> {
 		this.updatedAt = updatedAt;
 	}
 
+	/**
+	 * @return the isDefault
+	 */
+	public boolean isDefault() {
+		return isDefault;
+	}
+
+	/**
+	 * @param isDefault the isDefault to set
+	 */
+	public void setDefault(boolean isDefault) {
+		this.isDefault = isDefault;
+	}
+	
+	
 }

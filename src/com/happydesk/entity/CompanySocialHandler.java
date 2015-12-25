@@ -12,15 +12,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "company_email_parser")
-public class CompanyEmailParser extends BaseEntity<Integer> {
+@Table(name = "company_social_handler")
+public class CompanySocialHandler extends BaseEntity<Integer> {
 
 	/**
 	 * om yadav 
-	 * Table : company_email_parser
+	 * Table : company_social_handler
 	 */
 
-	private static final long serialVersionUID = 1259291331666015204L;
+	private static final long serialVersionUID = 3942695735970852616L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +28,22 @@ public class CompanyEmailParser extends BaseEntity<Integer> {
 
 	@Column(name = "company_id")
 	private Integer companyId;
+	  
+	@Column(name = "company_token")
+	private String companyToken;
 
-	@Column(name = "email_id")
-	private String email;
+	@Column(name = "token_secret_key")
+	private String companyTokenKey;
+	
+	@Column(name = "social_media_id")
+	private Integer userSocialMediaId;
 
+	@Column(name = "source_type_id")
+	private Integer sourceTypeId;
+	
+	@Column(name = "screen_name")
+	private Integer screenName;
+	
 	@Column(name = "created_by")
 	private Integer createdBy;
 
@@ -71,17 +83,73 @@ public class CompanyEmailParser extends BaseEntity<Integer> {
 	}
 
 	/**
-	 * @return the email
+	 * @return the companyToken
 	 */
-	public String getEmail() {
-		return email;
+	public String getCompanyToken() {
+		return companyToken;
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param companyToken the companyToken to set
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCompanyToken(String companyToken) {
+		this.companyToken = companyToken;
+	}
+
+	/**
+	 * @return the companyTokenKey
+	 */
+	public String getCompanyTokenKey() {
+		return companyTokenKey;
+	}
+
+	/**
+	 * @param companyTokenKey the companyTokenKey to set
+	 */
+	public void setCompanyTokenKey(String companyTokenKey) {
+		this.companyTokenKey = companyTokenKey;
+	}
+
+	/**
+	 * @return the userSocialMediaId
+	 */
+	public Integer getUserSocialMediaId() {
+		return userSocialMediaId;
+	}
+
+	/**
+	 * @param userSocialMediaId the userSocialMediaId to set
+	 */
+	public void setUserSocialMediaId(Integer userSocialMediaId) {
+		this.userSocialMediaId = userSocialMediaId;
+	}
+
+	/**
+	 * @return the sourceTypeId
+	 */
+	public Integer getSourceTypeId() {
+		return sourceTypeId;
+	}
+
+	/**
+	 * @param sourceTypeId the sourceTypeId to set
+	 */
+	public void setSourceTypeId(Integer sourceTypeId) {
+		this.sourceTypeId = sourceTypeId;
+	}
+
+	/**
+	 * @return the screenName
+	 */
+	public Integer getScreenName() {
+		return screenName;
+	}
+
+	/**
+	 * @param screenName the screenName to set
+	 */
+	public void setScreenName(Integer screenName) {
+		this.screenName = screenName;
 	}
 
 	/**
@@ -140,4 +208,6 @@ public class CompanyEmailParser extends BaseEntity<Integer> {
 		this.updatedAt = updatedAt;
 	}
 
+	
+	
 }

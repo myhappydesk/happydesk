@@ -1,6 +1,6 @@
 package com.happydesk.entity;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "agent")
@@ -43,16 +45,18 @@ public class Agent extends BaseEntity<Integer> {
 	private Integer companyId;
 
 	@Column(name = "created_by")
-	private String createdBy;
+	private Integer createdBy;
 
 	@Column(name = "updated_by")
-	private String updatedBy;
+	private Integer updatedBy;
 
+	@Temporal( TemporalType.TIMESTAMP)
 	@Column(name = "created_at")
-	private Timestamp createdAt;
+	private Date createdAt;
 
+	@Temporal( TemporalType.TIMESTAMP)
 	@Column(name = "updated_at")
-	private Timestamp updatedAt;
+	private Date updatedAt;
 
 	@Override
 	public Integer getId() {
@@ -172,7 +176,7 @@ public class Agent extends BaseEntity<Integer> {
 	/**
 	 * @return the createdBy
 	 */
-	public String getCreatedBy() {
+	public Integer getCreatedBy() {
 		return createdBy;
 	}
 
@@ -180,14 +184,14 @@ public class Agent extends BaseEntity<Integer> {
 	 * @param createdBy
 	 *            the createdBy to set
 	 */
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
 
 	/**
 	 * @return the updatedBy
 	 */
-	public String getUpdatedBy() {
+	public Integer getUpdatedBy() {
 		return updatedBy;
 	}
 
@@ -195,14 +199,14 @@ public class Agent extends BaseEntity<Integer> {
 	 * @param updatedBy
 	 *            the updatedBy to set
 	 */
-	public void setUpdatedBy(String updatedBy) {
+	public void setUpdatedBy(Integer updatedBy) {
 		this.updatedBy = updatedBy;
 	}
 
 	/**
 	 * @return the createdAt
 	 */
-	public Timestamp getCreatedAt() {
+	public Date getCreatedAt() {
 		return createdAt;
 	}
 
@@ -210,14 +214,14 @@ public class Agent extends BaseEntity<Integer> {
 	 * @param createdAt
 	 *            the createdAt to set
 	 */
-	public void setCreatedAt(Timestamp createdAt) {
+	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
 	/**
 	 * @return the updatedAt
 	 */
-	public Timestamp getUpdatedAt() {
+	public Date getUpdatedAt() {
 		return updatedAt;
 	}
 
@@ -225,7 +229,7 @@ public class Agent extends BaseEntity<Integer> {
 	 * @param updatedAt
 	 *            the updatedAt to set
 	 */
-	public void setUpdatedAt(Timestamp updatedAt) {
+	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

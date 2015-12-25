@@ -12,25 +12,27 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "company_email_parser")
-public class CompanyEmailParser extends BaseEntity<Integer> {
+@Table(name = "ticket")
+public class Ticket extends BaseEntity<Integer> {
 
 	/**
 	 * om yadav 
-	 * Table : company_email_parser
 	 */
-
-	private static final long serialVersionUID = 1259291331666015204L;
+	
+	private static final long serialVersionUID = -521112381645055089L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "company_id")
-	private Integer companyId;
+	@Column(name = "complainer_id")
+	private Integer complainerId;
 
-	@Column(name = "email_id")
-	private String email;
+	@Column(name = "company_id")
+	private String companyId;
+
+	@Column(name = "source_type_id")
+	private String sourceTypeId;
 
 	@Column(name = "created_by")
 	private Integer createdBy;
@@ -57,31 +59,45 @@ public class CompanyEmailParser extends BaseEntity<Integer> {
 	}
 
 	/**
+	 * @return the complainerId
+	 */
+	public Integer getComplainerId() {
+		return complainerId;
+	}
+
+	/**
+	 * @param complainerId the complainerId to set
+	 */
+	public void setComplainerId(Integer complainerId) {
+		this.complainerId = complainerId;
+	}
+
+	/**
 	 * @return the companyId
 	 */
-	public Integer getCompanyId() {
+	public String getCompanyId() {
 		return companyId;
 	}
 
 	/**
 	 * @param companyId the companyId to set
 	 */
-	public void setCompanyId(Integer companyId) {
+	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
 
 	/**
-	 * @return the email
+	 * @return the sourceTypeId
 	 */
-	public String getEmail() {
-		return email;
+	public String getSourceTypeId() {
+		return sourceTypeId;
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param sourceTypeId the sourceTypeId to set
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSourceTypeId(String sourceTypeId) {
+		this.sourceTypeId = sourceTypeId;
 	}
 
 	/**
@@ -140,4 +156,5 @@ public class CompanyEmailParser extends BaseEntity<Integer> {
 		this.updatedAt = updatedAt;
 	}
 
+	
 }

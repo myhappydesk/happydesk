@@ -12,31 +12,34 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "company_email_parser")
-public class CompanyEmailParser extends BaseEntity<Integer> {
+@Table(name = "conversation_attachment")
+public class Attachments extends BaseEntity<Integer> {
 
 	/**
 	 * om yadav 
-	 * Table : company_email_parser
+	 * Table : conversation_attachment
 	 */
 
-	private static final long serialVersionUID = 1259291331666015204L;
+	private static final long serialVersionUID = -5133694632035772047L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "company_id")
-	private Integer companyId;
+	@Column(name = "conversation_id")
+	private Integer conversationId;
 
-	@Column(name = "email_id")
-	private String email;
+	@Column(name = "attachment_type")
+	private String attachmentType;
 
-	@Column(name = "created_by")
-	private Integer createdBy;
+	@Column(name = "attachment_url")
+	private String attachmentUrl;
 
 	@Column(name = "updated_by")
 	private Integer updatedBy;
+	
+	@Column(name = "created_by")
+	private Integer createdBy;
 
 	@Temporal( TemporalType.TIMESTAMP)
 	@Column(name = "created_at")
@@ -57,45 +60,45 @@ public class CompanyEmailParser extends BaseEntity<Integer> {
 	}
 
 	/**
-	 * @return the companyId
+	 * @return the conversationId
 	 */
-	public Integer getCompanyId() {
-		return companyId;
+	public Integer getConversationId() {
+		return conversationId;
 	}
 
 	/**
-	 * @param companyId the companyId to set
+	 * @param conversationId the conversationId to set
 	 */
-	public void setCompanyId(Integer companyId) {
-		this.companyId = companyId;
+	public void setConversationId(Integer conversationId) {
+		this.conversationId = conversationId;
 	}
 
 	/**
-	 * @return the email
+	 * @return the attachmentType
 	 */
-	public String getEmail() {
-		return email;
+	public String getAttachmentType() {
+		return attachmentType;
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param attachmentType the attachmentType to set
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public void setAttachmentType(String attachmentType) {
+		this.attachmentType = attachmentType;
 	}
 
 	/**
-	 * @return the createdBy
+	 * @return the attachmentUrl
 	 */
-	public Integer getCreatedBy() {
-		return createdBy;
+	public String getAttachmentUrl() {
+		return attachmentUrl;
 	}
 
 	/**
-	 * @param createdBy the createdBy to set
+	 * @param attachmentUrl the attachmentUrl to set
 	 */
-	public void setCreatedBy(Integer createdBy) {
-		this.createdBy = createdBy;
+	public void setAttachmentUrl(String attachmentUrl) {
+		this.attachmentUrl = attachmentUrl;
 	}
 
 	/**
@@ -140,4 +143,5 @@ public class CompanyEmailParser extends BaseEntity<Integer> {
 		this.updatedAt = updatedAt;
 	}
 
+	
 }
