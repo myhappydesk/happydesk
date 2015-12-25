@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
  *
  */
 @Controller
-
 public class LoginController {
 	
 	/**
@@ -37,13 +36,13 @@ public class LoginController {
         return new ModelAndView("login", "message", message);  
     }
 	
-	@RequestMapping("/loginprocess")  
+	@RequestMapping("/dologin")  
     public ModelAndView loginProcess(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		
-		String username=request.getParameter("email");
+		String username=request.getParameter("username");
 		System.out.println("Email is :::"+username);
-		String password=request.getParameter("password");
+		String password=request.getParameter("passwd");
 		System.out.println("password is :::"+password);
 		
 		Map<String,String> loginMap=new HashMap<String,String>();
