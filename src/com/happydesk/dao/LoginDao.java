@@ -4,16 +4,15 @@
 package com.happydesk.dao;
 
 /**
- * @author Apple
+ * @author manuhappydesk
  *
  */
 public class LoginDao {
-	
-	
-	public String  getLoginInfo(String email){
-		
+
+	public String getLoginInfo(String email) {
+
 		return "success";
-		
+
 	}
 
 }
