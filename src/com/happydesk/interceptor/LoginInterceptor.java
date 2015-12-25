@@ -29,6 +29,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         logger.info("Request URL::" + request.getRequestURL().toString()
                 + ":: Start Time=" + System.currentTimeMillis());
         request.setAttribute("startTime", startTime);
+        //response.sendRedirect("login.do");
         //if returned false, we need to make sure 'response' is sent
         return true;
     }

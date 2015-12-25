@@ -15,12 +15,23 @@
 	    http://www.springframework.org/schema/aop/spring-aop.xsd 
 	    http://www.springframework.org/schema/task
 	   	http://www.springframework.org/schema/task/spring-task.xsd">
+	   	
 
-	<context:component-scan base-package="net.codejava.spring,com.happydesk.controller,com.happydesk.service,com.happydesk.dao,com.happydesk.util,com.happydesk.domain,com.happydesk.dto" />
+
+
+	<context:component-scan base-package="com.happydesk,com.happydesk.interceptor" />
 	<mvc:annotation-driven />
 	<!-- your beans declaration goes here -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
         <property name="prefix" value="/WEB-INF/view/" />  
         <property name="suffix" value=".jsp" />  
     </bean>
+     <!-- Configuring interceptors based on URI -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/loginprocess.do" />
+            <bean class="com.happydesk.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    
 </beans>

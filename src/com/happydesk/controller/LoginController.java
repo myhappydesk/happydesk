@@ -7,23 +7,23 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.Session;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.happydesk.util.SessionUtil;
+
+
 
 /**
  * @author Manu
  *
  */
 @Controller
+
 public class LoginController {
-	@Autowired
-	SessionUtil sessionUtil;
+//	@Autowired
+	//SessionUtil sessionUtil;
 	
 	/**
 	 * Method for handling file download request from client
@@ -42,16 +42,17 @@ public class LoginController {
         return new ModelAndView("login", "message", message);  
     }
 	
-	@RequestMapping("/dologin")  
+	@RequestMapping("/loginprocess")  
     public ModelAndView loginProcess(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		
-		String username=request.getParameter("username");
+		String username=request.getParameter("email");
 		System.out.println("Email is :::"+username);
-		String password=request.getParameter("passwd");
+		String password=request.getParameter("password");
 		System.out.println("password is :::"+password);
 	
-		sessionUtil.setSession(request.getSession());
+		//sessionUtil.setSession(request.getSession());
+		
 		Map<String,String> loginMap=new HashMap<String,String>();
 		loginMap.put("email", username); 
         return new ModelAndView("loginsuccess","loginMap",loginMap);  

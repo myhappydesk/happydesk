@@ -976,7 +976,7 @@
 							<webResources>
 								<resource>
 									<!-- this is relative to the pom.xml directory -->
-									<directory>resource/local</directory>
+									<directory>resources/local</directory>
 									<!-- override default destination at root of war -->
 									<targetPath>WEB-INF/classes</targetPath>
 								</resource>
@@ -1015,7 +1015,7 @@
 							<webResources>
 								<resource>
 									<!-- this is relative to the pom.xml directory -->
-									<directory>resource/production</directory>
+									<directory>resources/production</directory>
 									<!-- override default destination at root of war -->
 									<targetPath>WEB-INF/classes</targetPath>
 								</resource>
@@ -1023,10 +1023,7 @@
 			                        <directory>resources/META-INF</directory>
 			                        <filtering>true</filtering>
 			                        <targetPath>META-INF</targetPath>
-			                        <includes>
-			                            <include>context.xml</include>
-			                            <include>**/*.MF</include>
-			                        </includes>
+			                        
 			                    </resource>
 							</webResources>
 							<archive>
