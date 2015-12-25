@@ -14,12 +14,12 @@ import org.springframework.orm.jpa.EntityManagerFactoryUtils;
 import org.springframework.orm.jpa.JpaTemplate;
 import org.springframework.orm.jpa.support.JpaDaoSupport;
 
-import com.happydesk.domain.Domain;
+import com.happydesk.entity.BaseEntity;
 import com.happydesk.util.Filter;
 import com.happydesk.util.HappyDeskException;
 
 
-public class GenericDao<K, E extends Domain<?>> extends JpaDaoSupport implements Serializable
+public class GenericDao<K, E extends BaseEntity<?>> extends JpaDaoSupport implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 

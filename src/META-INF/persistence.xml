@@ -5,11 +5,7 @@
 	<!--   -->
 	<persistence-unit name="happydesk">
 		<mapping-file>META-INF/ormdef.xml</mapping-file>
-		
-		<class>com.happydesk.domain.User</class>
+		<class>com.happydesk.entity.User</class>
 		<exclude-unlisted-classes/>		
-
 	</persistence-unit>
-
-	
 </persistence>

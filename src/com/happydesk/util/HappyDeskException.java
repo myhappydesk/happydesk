@@ -2,8 +2,8 @@ package com.happydesk.util;
 
 public class HappyDeskException extends java.lang.Exception {
 
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -4581740387522086879L;
+
 	public HappyDeskException(String message, Throwable cause)
 	{
 		super(message, cause);

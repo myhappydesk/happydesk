@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.happydesk.domain;
+package com.happydesk.entity;
 
 import java.io.Serializable;
 
@@ -19,7 +19,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="user")
-public class User extends Domain<Integer> implements Serializable{
+public class User extends BaseEntity<Integer> implements Serializable{
+
+	private static final long serialVersionUID = -5952231633736953084L;
 
 	@Id  
 	 @GeneratedValue(strategy=GenerationType.AUTO)  

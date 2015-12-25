@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import com.happydesk.domain.User;
+import com.happydesk.entity.User;
 import com.happydesk.util.HappyDeskException;
 
 
