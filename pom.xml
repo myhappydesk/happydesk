@@ -8,6 +8,7 @@
 	<name>HappyDesk</name>
 	<description>HappyDeskSuite</description>
 	<properties>
+		<base.dir>${project.basedir}/WebContent/WEB-INF/lib</base.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.build.finalName>HappyDeskSuite</project.build.finalName>
@@ -957,6 +958,13 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency> 
+		<dependency>
+			<groupId>com.edlio</groupId>
+			<artifactId>emailreplyparser</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${base.dir}/EmailParser.jar</systemPath>
+		</dependency>
 	</dependencies>
 	<profiles>
 		<profile>
