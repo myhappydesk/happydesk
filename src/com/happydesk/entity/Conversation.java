@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "complainer")
+@Table(name = "conversation")
 public class Conversation extends BaseEntity<Integer> {
 	
 
