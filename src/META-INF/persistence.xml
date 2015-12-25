@@ -5,7 +5,17 @@
 	<!--   -->
 	<persistence-unit name="happydesk">
 		<mapping-file>META-INF/ormdef.xml</mapping-file>
-		<class>com.happydesk.entity.User</class>
+			<class>com.happydesk.entity.Attachments</class>
+			<class>com.happydesk.entity.Company</class>
+			<class>com.happydesk.entity.Agent</class>
+			<class>com.happydesk.entity.CompanyEmailParser</class>
+			<class>com.happydesk.entity.CompanyEmailResponse</class>
+			<class>com.happydesk.entity.CompanySocialHandler</class>
+			<class>com.happydesk.entity.Complainer</class>
+			<class>com.happydesk.entity.Conversation</class>
+			<class>com.happydesk.entity.Ticket</class>
+			<class>com.happydesk.entity.User</class>
+			
 		<exclude-unlisted-classes/>		
 	</persistence-unit>
 </persistence>
