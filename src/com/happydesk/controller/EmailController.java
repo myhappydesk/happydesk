@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.edlio.emailreplyparser.EmailReplyParser;
 import com.happydesk.dto.EmailDTO;
+import com.happydesk.dto.EmailRawDataDTO;
 import com.happydesk.util.CommonUtil;
 import com.happydesk.util.HappyDeskConstant;
 
@@ -47,6 +48,40 @@ public class EmailController {
 			String mailText = request.getParameter("text");
 			String bodyText = null;
 			String bodyHtml = request.getParameter("html");
+			String to = request.getParameter("to");
+			String from = request.getParameter("from");
+			String cc = request.getParameter("cc");
+			String subject = request.getParameter("subject");
+			String SPF = request.getParameter("SPF");
+			String envelope = request.getParameter("envelope");
+			String charsets = request.getParameter("charsets");
+			String spam_score = request.getParameter("spam_score");
+			String spam_report = request.getParameter("spam_report");
+			String attachments = request.getParameter("attachments");
+			String attachments_info = request.getParameter("attachments-info");
+			String attachmentX = request.getParameter("attachmentX");
+			
+			
+			EmailRawDataDTO emailRawDataDTO = new EmailRawDataDTO();
+			emailRawDataDTO.setHeaders(headers);
+			emailRawDataDTO.setMessageId(messageId);
+			emailRawDataDTO.setMailText(mailText);
+			emailRawDataDTO.setBodyHtml(bodyHtml);
+			emailRawDataDTO.setTo(to);
+			emailRawDataDTO.setFrom(from);
+			emailRawDataDTO.setCc(cc);
+			emailRawDataDTO.setSubject(subject);
+			emailRawDataDTO.setEnvelope(envelope);
+			emailRawDataDTO.setCharsets(charsets);
+			emailRawDataDTO.setSPF(SPF);
+			emailRawDataDTO.setSpam_score(spam_score);
+			emailRawDataDTO.setSpam_report(spam_report);
+			emailRawDataDTO.setAttachments(attachments);
+			emailRawDataDTO.setAttachments_info(attachments_info);
+			emailRawDataDTO.setAttachmentX(attachmentX);
+			
+			
+			
 			
 			
 			// New Implementation to find out Complaint Id(if present) from Message Id header
@@ -112,8 +147,7 @@ public class EmailController {
 						
 						boolean sendCommentNotificationToBrand = false;
 						
-						String from = request.getParameter("from").trim();
-						String name = null;
+												String name = null;
 						String email = null;
 						
 						if(from.trim().indexOf("<") < 1) {
@@ -418,7 +452,7 @@ public class EmailController {
 					}
 					EmailDTO emailDTO = new EmailDTO();
 					//EmailParserCompanyInfo emailParserCompanyInfo = null;
-					String from = isForwardedMail ? fromEmailStr : request.getParameter("from").trim();
+				     from = isForwardedMail ? fromEmailStr : request.getParameter("from").trim();
 							
 					String name = null;
 					String email = null;
