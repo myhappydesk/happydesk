@@ -507,4 +507,13 @@ CREATE TABLE `facebook_page_admin_data` (
 ) ENGINE=InnoDB AUTO_INCREMENT=507 DEFAULT CHARSET=latin1;
 
 
+CREATE TABLE `twitter_raw_data` (
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
+  `resource_id` bigint(11) NOT NULL,
+  `resource_type` tinyint(1) NOT NULL,
+  `raw_data` longtext CHARACTER SET utf8mb4 NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

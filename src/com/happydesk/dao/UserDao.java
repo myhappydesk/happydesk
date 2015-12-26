@@ -13,16 +13,12 @@ import com.happydesk.util.HappyDeskException;
 
 
 /**
- * @author Apple
+ * @author Manu
  *
  */
 public class UserDao extends GenericDao<Integer, User>{
 	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7182474704310999245L;
 
 	public String  getUserInfo(String email){
 		

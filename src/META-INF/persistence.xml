@@ -15,7 +15,7 @@
 			<class>com.happydesk.entity.Conversation</class>
 			<class>com.happydesk.entity.Ticket</class>
 			<class>com.happydesk.entity.User</class>
-			
+			<class>com.happydesk.entity.TwitterRawData</class>
 		<exclude-unlisted-classes/>		
 	</persistence-unit>
 </persistence>
