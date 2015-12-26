@@ -442,3 +442,69 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+CREATE TABLE `cron_jobs_data` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `job_name` varchar(200) DEFAULT NULL,
+  `job_class_name` varchar(500) DEFAULT NULL,
+  `job_desc` text,
+  `job_time_expression` varchar(200) DEFAULT NULL,
+  `job_process_id` mediumint(11) unsigned DEFAULT NULL,
+  `job_brand_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
+  `updated_by` mediumint(11) unsigned DEFAULT NULL,
+  `updated_by_name` varchar(300) DEFAULT NULL,
+  `updated_by_ip_address` varchar(900) DEFAULT NULL,
+  `process_host` varchar(20) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `automatic_process_index` (`job_process_id`),
+  CONSTRAINT `automatic_process_index` FOREIGN KEY (`job_process_id`) REFERENCES `automatic_process` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `social_cron_data` (
+  `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
+  `social_cron_type` int(11) NOT NULL,
+  `company_id` mediumint(8) unsigned DEFAULT NULL,
+  `status` smallint(3) NOT NULL DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `ipAddress` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `company_id` (`company_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8;
+
+
+
+
+
+CREATE TABLE `facebook_company_tokens_data` (
+  `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
+  `brand_id` mediumint(8) unsigned DEFAULT NULL,
+  `page_access_token` varchar(400) DEFAULT NULL,
+  `fb_page_id` varchar(50) DEFAULT NULL,
+  `fb_page_name` varchar(200) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `fb_realtime_feed` smallint(3) NOT NULL DEFAULT '0',
+  `to_request_date` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `company_facebook_fk_1` (`brand_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+
+
+
+
+
+CREATE TABLE `facebook_page_admin_data` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `facebook_company_tokens_id` int(10) unsigned NOT NULL,
+  `fb_user_id` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=507 DEFAULT CHARSET=latin1;
+
+
+
