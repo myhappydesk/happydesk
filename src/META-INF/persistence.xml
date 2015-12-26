@@ -15,6 +15,10 @@
 			<class>com.happydesk.entity.Conversation</class>
 			<class>com.happydesk.entity.Ticket</class>
 			<class>com.happydesk.entity.User</class>
+			<class>com.happydesk.entity.CronJobsData</class>
+			<class>com.happydesk.entity.FacebookCompanyTokens</class>
+			<class>com.happydesk.entity.FacebookPageAdmin</class>
+			<class>com.happydesk.entity.SocialCronInfo</class>
 			
 		<exclude-unlisted-classes/>		
 	</persistence-unit>
