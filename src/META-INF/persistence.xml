@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-	
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+
 	<!-- Default (No TreeCache) -->
-	<!--   -->
+	<!-- -->
 	<persistence-unit name="happydesk">
 		<mapping-file>META-INF/ormdef.xml</mapping-file>
-			<class>com.happydesk.entity.Attachments</class>
-			<class>com.happydesk.entity.Company</class>
-			<class>com.happydesk.entity.Agent</class>
-			<class>com.happydesk.entity.CompanyEmailParser</class>
-			<class>com.happydesk.entity.CompanyEmailResponse</class>
-			<class>com.happydesk.entity.CompanySocialHandler</class>
-			<class>com.happydesk.entity.Complainer</class>
-			<class>com.happydesk.entity.Conversation</class>
-			<class>com.happydesk.entity.Ticket</class>
-			<class>com.happydesk.entity.User</class>
-			<class>com.happydesk.entity.TwitterRawData</class>
-			<class>com.happydesk.entity.CronJobsData</class>
-			<class>com.happydesk.entity.FacebookCompanyTokens</class>
-			<class>com.happydesk.entity.FacebookPageAdmin</class>
-			<class>com.happydesk.entity.SocialCronInfo</class>
-		<exclude-unlisted-classes/>		
+		<class>com.happydesk.entity.Attachments</class>
+		<class>com.happydesk.entity.Company</class>
+		<class>com.happydesk.entity.Agent</class>
+		<class>com.happydesk.entity.CompanyEmailParser</class>
+		<class>com.happydesk.entity.CompanyEmailResponse</class>
+		<class>com.happydesk.entity.CompanySocialHandler</class>
+		<class>com.happydesk.entity.Complainer</class>
+		<class>com.happydesk.entity.Conversation</class>
+		<class>com.happydesk.entity.Ticket</class>
+		<class>com.happydesk.entity.User</class>
+		<class>com.happydesk.entity.TwitterRawData</class>
+		<class>com.happydesk.entity.CronJobsData</class>
+		<class>com.happydesk.entity.FacebookCompanyTokens</class>
+		<class>com.happydesk.entity.FacebookPageAdmin</class>
+		<class>com.happydesk.entity.SocialCronData</class>
+		<class>com.happydesk.entity.LastAPICallData</class>
+		<exclude-unlisted-classes />
 	</persistence-unit>
 </persistence>

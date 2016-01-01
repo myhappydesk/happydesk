@@ -29,8 +29,16 @@ public class FacebookCron implements Job, ServletContextAware{
 
 	@Override
 	public void setServletContext(ServletContext application) {
-		this.application = application;
+		this.setApplication(application);
 		
+	}
+
+	public ServletContext getApplication() {
+		return application;
+	}
+
+	public void setApplication(ServletContext application) {
+		this.application = application;
 	}
 	
 	

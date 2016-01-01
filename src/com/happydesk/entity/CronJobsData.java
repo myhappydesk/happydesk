@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,11 +17,8 @@ import javax.persistence.TemporalType;
 @Table(name="cron_jobs_data")
 public class CronJobsData  extends BaseEntity<Integer> implements Serializable {
 	
+	private static final long serialVersionUID = 7798097932832200364L;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -36,11 +31,6 @@ public class CronJobsData  extends BaseEntity<Integer> implements Serializable {
 	
 	@Column(name="job_time_expression")
 	private String jobTimeExpression;
-	
-	/*@OneToOne
-	@JoinColumn(name="job_process_id")
-	private AutomaticProcess automaticProcess;
-	*/
 	
 	@Column(name="job_brand_id")
 	private Integer brandId;
@@ -95,12 +85,6 @@ public class CronJobsData  extends BaseEntity<Integer> implements Serializable {
 	public void setJobTimeExpression(String jobTimeExpression) {
 		this.jobTimeExpression = jobTimeExpression;
 	}
-	/*public AutomaticProcess getAutomaticProcess() {
-		return automaticProcess;
-	}
-	public void setAutomaticProcess(AutomaticProcess automaticProcess) {
-		this.automaticProcess = automaticProcess;
-	}*/
 	public Integer getBrandId() {
 		return brandId;
 	}
@@ -155,6 +139,4 @@ public class CronJobsData  extends BaseEntity<Integer> implements Serializable {
 	public void setStatus(Byte status) {
 		this.status = status;
 	}
-	
-
 }

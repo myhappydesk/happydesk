@@ -463,7 +463,7 @@ CREATE TABLE `cron_jobs_data` (
   PRIMARY KEY (`id`),
   KEY `automatic_process_index` (`job_process_id`),
   CONSTRAINT `automatic_process_index` FOREIGN KEY (`job_process_id`) REFERENCES `automatic_process` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `social_cron_data` (
   `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -474,11 +474,7 @@ CREATE TABLE `social_cron_data` (
   `ipAddress` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `company_id` (`company_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8;
-
-
-
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `facebook_company_tokens_data` (
   `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -493,7 +489,7 @@ CREATE TABLE `facebook_company_tokens_data` (
   `to_request_date` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `company_facebook_fk_1` (`brand_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
@@ -504,7 +500,7 @@ CREATE TABLE `facebook_page_admin_data` (
   `facebook_company_tokens_id` int(10) unsigned NOT NULL,
   `fb_user_id` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=507 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `twitter_raw_data` (
@@ -517,3 +513,13 @@ CREATE TABLE `twitter_raw_data` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `last_api_call_data` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `company_id` mediumint(8) unsigned DEFAULT '0',
+  `last_resource_id` int(11) DEFAULT NULL,
+  `last_request_date` datetime DEFAULT NULL,
+  `resource_type` smallint(3) unsigned DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

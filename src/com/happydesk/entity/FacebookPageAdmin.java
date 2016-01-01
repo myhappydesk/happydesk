@@ -15,6 +15,8 @@ import javax.persistence.Table;
 @Table(name="facebook_page_admin")
 public class FacebookPageAdmin extends BaseEntity<Integer> implements Serializable {
 	
+	private static final long serialVersionUID = -8635815904291494278L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;

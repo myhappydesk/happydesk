@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="social_cron_data")
-public class SocialCronInfo extends BaseEntity<Integer> implements Serializable {
+public class SocialCronData extends BaseEntity<Integer> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
     @Id
@@ -36,10 +35,19 @@ public class SocialCronInfo extends BaseEntity<Integer> implements Serializable 
     @Column(name="status")
     private Byte status;
     
+    @Column(name="created_by")
+    private Integer createdBy;
+    
+    @Column(name="updated_by")
+    private Integer updatedBy;
     
     @Temporal(TemporalType.TIMESTAMP)
 	@Column(name="created_at")
 	private Date createdAt;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+	@Column(name="updated_at")
+	private Date updatedAt;
 
     @Column(name="ipAddress")
     private String ipAddress;
@@ -94,6 +102,30 @@ public class SocialCronInfo extends BaseEntity<Integer> implements Serializable 
 
 	public void setStatus(Byte status) {
 		this.status = status;
+	}
+
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Integer getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	

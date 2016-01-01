@@ -16,6 +16,8 @@ public class ConfigProperties implements Serializable {
 	private String twitterAccessKey;
 	private String twitterAccessSecret;
 	
+	private String facebookAppId;
+	private String facebookAppSecret;
 	
 	/**
 	 * @return the twitterConsumerKey
@@ -77,6 +79,16 @@ public class ConfigProperties implements Serializable {
 	public void setTwitterAccessSecret(String twitterAccessSecret) {
 		this.twitterAccessSecret = twitterAccessSecret;
 	}
-	
-	
+	public String getFacebookAppId() {
+		return facebookAppId;
+	}
+	public void setFacebookAppId(String facebookAppId) {
+		this.facebookAppId = facebookAppId;
+	}
+	public String getFacebookAppSecret() {
+		return facebookAppSecret;
+	}
+	public void setFacebookAppSecret(String facebookAppSecret) {
+		this.facebookAppSecret = facebookAppSecret;
+	}
 }

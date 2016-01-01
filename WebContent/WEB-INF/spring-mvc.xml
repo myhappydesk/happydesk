@@ -123,7 +123,17 @@
         <property name="removeAbandoned" value="true"/>
         <property name="removeAbandonedTimeout" value="55"/>
     </bean>
-	
+	<bean id="config" class="com.happydesk.util.ConfigProperties">
+		<!-- Twitter config -->
+		<property name="twitterConsumerKey" value="${twitterConsumerKey}" />
+        <property name="twitterConsumerSecret" value="${twitterConsumerSecret}" />
+        <property name="twitterCallbackURL" value="${twitterCallbackUrl}" />
+		<property name="twitterAccessKey" value="${twitterAccessKey}" />
+        <property name="twitterAccessSecret" value="${twitterAccessSecret}" />
+        <!-- Facebook config -->
+        <property name="facebookAppId" value="${facebookAppId}" />
+        <property name="facebookAppSecret" value="${facebookAppSecret}" />
+	</bean>
 	 <bean id="dataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
         <property name="targetDataSource" ref="mainDataSource"></property>
     </bean>
@@ -144,4 +154,19 @@
      <bean id="userDao" class="com.happydesk.dao.UserDao">
    		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
+	
+	<bean id="twitterRawDataDAO" class="com.happydesk.dao.TwitterRawDataDAO">
+   		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="socialCronInfoDAO" class="com.happydesk.dao.SocialCronInfoDAO">
+   		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<bean id="cronJobsDataDAO" class="com.happydesk.dao.CronJobsDataDAO">
+   		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<bean id="lastAPICallDataDAO" class="com.happydesk.dao.LastAPICallDataDAO">
+   		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
 </beans>

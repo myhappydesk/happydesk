@@ -25,10 +25,12 @@ public class TwitterDM {
 	private ConfigProperties config;
 	
 	private static final Logger logger =  LoggerFactory.getLogger(TwitterDM.class);
-	private String TWITTER_ACCESS_KEY = "4653817574-r25mCLeZx5WNlNtzBwkBsVE3IlmTiLGVGhd2gN2";
-	private String TWITTER_ACCESS_SECRET = "4k0UvX64xaUpan2cONPKMvcd7Ap2jCnz7kPh0MtzyhGKa";
-	private String TWITTER_CONSUMER_KEY = "dWBUWqHXPvRJAd7M8ebtJ4Ght";
-	private String TWITTER_CONSUMER_SECRET = "95PmgdwWk5XzwG6ET5h0o3WRtLLt0QTeaB805X8K1r8cmE2cw1";
+	private final String TWITTER_ACCESS_KEY = config.getTwitterAccessKey();
+	private final String TWITTER_ACCESS_SECRET = config.getTwitterAccessSecret();
+	private final String TWITTER_CONSUMER_KEY = config.getTwitterConsumerKey();
+	private final String TWITTER_CONSUMER_SECRET = config.getTwitterConsumerSecret();
+	private final String TWITTER_CALLBACK_URL = config.getTwitterCallbackURL();
+
 			
 	public String populateTwitterDM() throws Exception{
 	    	ConfigurationBuilder builder = new ConfigurationBuilder();
@@ -39,7 +41,6 @@ public class TwitterDM {
 	     	Configuration configuration = builder.build();
 	     	TwitterFactory factory = new TwitterFactory(configuration);
 	    	Twitter twitter = factory.getInstance();
-	    	DirectMessage tempDirectMessage = null;
 	    	
 	    	int pages = 0 ;
 	    	
@@ -58,9 +59,6 @@ public class TwitterDM {
 		                	for(int i=messages.size()-1;i>=0;i--){
 			                	DirectMessage message = messages.get(i);
 			                	System.out.println("Message Data : "+ message.toString());
-			                  if(i==0){
-			                	  tempDirectMessage = messages.get(i);
-			                  }
 			                }
 			                if(messages.size()==20)
 			                	paging.setPage(paging.getPage() + 1);
