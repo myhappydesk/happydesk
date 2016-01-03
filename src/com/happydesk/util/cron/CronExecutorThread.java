@@ -44,7 +44,7 @@ public class CronExecutorThread implements ApplicationListener<ContextRefreshedE
 	private void initCronTrigger(){
 		try {
 			List<CronJobsData> cronsList = cronJobsDataService.findAllCronsData();
-			Scheduler scheduler = new StdSchedulerFactory("/quartz.properties").getScheduler();
+			Scheduler scheduler = new StdSchedulerFactory("resources/quartz.properties").getScheduler();
 			scheduler.start();
 			for (CronJobsData cronJobsData : cronsList) {
 				if (cronJobsData.getJobTimeExpression() != null && cronJobsData.getJobTimeExpression().length() > 0) {

@@ -23,16 +23,18 @@ public class User extends BaseEntity<Integer> implements Serializable{
 
 	private static final long serialVersionUID = -5952231633736953084L;
 
-	@Id  
+	 @Id  
 	 @GeneratedValue(strategy=GenerationType.AUTO)  
 	 @Column(name = "id")  
 	 private Integer Id;  
-	 
-	@Column(name="username")  
-	 private String username;
 	
 	@Column(name="email")  
 	 private String email;
+	
+	@Column(name="password")  
+	 private String password;
+	
+	
 	public String getEmail() {
 		return email;
 	}
@@ -48,10 +50,6 @@ public class User extends BaseEntity<Integer> implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	@Column(name="password")  
-	 private String password;
-	
 	   
 	 public Integer getId() {
 		return Id;
@@ -60,14 +58,4 @@ public class User extends BaseEntity<Integer> implements Serializable{
 	public void setId(Integer id) {
 		Id = id;
 	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	 
 }

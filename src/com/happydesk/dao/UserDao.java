@@ -27,8 +27,11 @@ public class UserDao extends GenericDao<Integer, User>{
 	}
 	
 	
-	public User findByEmailId(String emailId) throws HappyDeskException{
-		Query jpaQuery = getEntityManager().createQuery("Select u from User u where u.email  ='" + emailId+"'" );
+	@SuppressWarnings("unchecked")
+	public User findByEmailAndPassword(String email, String password) throws HappyDeskException{
+		Query jpaQuery = getEntityManager().createQuery("Select u from User u where u.email = :email and u.password = :password");
+		jpaQuery.setParameter("email", email);
+		jpaQuery.setParameter("password", password);
 		List<User> list=jpaQuery.getResultList();
 		if(list.size() > 0){
 			return list.get(0);

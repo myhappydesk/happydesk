@@ -24,14 +24,13 @@ public class LoginService {
 	public boolean authenticate(String email,String password){
 		
 		try {
-			User user=userDao.findByEmailId(email);
+			User user=userDao.findByEmailAndPassword(email,password);
 			if(user.getEmail()!= null && user.getEmail() != null && user.getEmail().equals(email.trim()) && user.getPassword() != null && user.getPassword().equals(password.trim()) ){
 				return true;
 			}else{
 				return false;
 			}
 		} catch (HappyDeskException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
